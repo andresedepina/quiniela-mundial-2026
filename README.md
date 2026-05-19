@@ -23,4 +23,4 @@ npm run dev
 See `docs/DEPLOY.md`.
 
 ## Notes
-This is a private pool tracker. Keep money collection outside the app unless a lawyer reviews gambling/payment compliance.
+This is a private pool tracker. Keep money collection outside the app unless a lawyer reviews gambling/payment compliance. 
