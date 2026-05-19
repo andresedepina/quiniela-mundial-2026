@@ -98,6 +98,5 @@ function App() {
     </main>}
     <footer>Private friendly pool app. Keep payment collection outside the app unless reviewed for gambling/payment compliance.</footer>
   </div>;
-}
-
-createRoot(document.getElementById('root')).render(<App />);
+}export default
+App;createRoot(document.getElementById('root')).render(<App />);
