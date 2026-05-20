@@ -85,7 +85,8 @@ useEffect(() => {
       </div>
       <div className="card pot">
 <Trophy size={30}/><span>Total Pot</span><strong>{Number.isFinite(pot) ? `$${pot.toLocaleString()}` : "$0"}</strong><small>Prize split: {league.prize || "70% / 20% / 10%"}</small>    </header>
-
+</div>
+</header>
     <section className="stats">
       <div><Users/><span>{demoFriends.length} players</span></div>
       <div><CalendarDays/><span>104-match seed file</span></div>
