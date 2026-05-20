@@ -84,8 +84,7 @@ useEffect(() => {
         <div className="ctaRow"><button onClick={() => setTab('picks')}>Make Picks</button><button className="ghost" onClick={() => setTab('setup')}>Launch Checklist</button></div>
       </div>
       <div className="card pot">
-<Trophy size={30}/><span>Total Pot</span><strong>{Number.isFinite(pot) ? `$${pot.toLocaleString()}` : "$0"}` : "$0"}</strong><small>Prize split: {league.prize || "70% / 20% / 10%"}</small>      </div>
-    </header>
+<Trophy size={30}/><span>Total Pot</span><strong>{Number.isFinite(pot) ? `$${pot.toLocaleString()}` : "$0"}</strong><small>Prize split: {league.prize || "70% / 20% / 10%"}</small>    </header>
 
     <section className="stats">
       <div><Users/><span>{demoFriends.length} players</span></div>
