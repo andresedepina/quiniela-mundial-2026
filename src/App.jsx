@@ -116,5 +116,5 @@ useEffect(() => {
     </main>}
     <footer>Private friendly pool app. Keep payment collection outside the app unless reviewed for gambling/payment compliance.</footer>
   </div>;
-}export default
-App;
+}
+export default App;
