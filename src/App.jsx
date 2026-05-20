@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Trophy, Users, ShieldCheck, Lock, Settings, Medal, CalendarDays, Share2, Database, Smartphone, Globe2 } from 'lucide-react';
 import { matches2026 } from './data/matches2026';
 import { demoFriends, demoLeague, demoPicks } from './data/demo';
-import { hasSupabase } from './lib/supabase';
+import { hasSupabase, supabase } from "./lib/supabase";
 import './style.css';
 
 function result(a, b) {
