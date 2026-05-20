@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import { useEffect, useMemo, useState } from "react";import { createRoot } from 'react-dom/client';
 import { Trophy, Users, ShieldCheck, Lock, Settings, Medal, CalendarDays, Share2, Database, Smartphone, Globe2 } from 'lucide-react';
 import { matches2026 } from './data/matches2026';
 import { demoFriends, demoLeague, demoPicks } from './data/demo';
@@ -33,14 +32,35 @@ function App() {
   const league = demoLeague;
   const visibleMatches = matches.filter(m => filter === 'All' || m.round === filter).slice(0, filter === 'All' ? 24 : 104);
   const rounds = ['All', ...Array.from(new Set(matches.map(m => m.round)))];
+const [friends, setFriends] = useState(demoFriends);
 
-  const leaderboard = useMemo(() => demoFriends.map(friend => {
+useEffect(() => {
+  async function loadPlayers() {
+    if (!supabase) return;
+
+    const { data, error } = await supabase
+      .from("players")
+      .select("*");
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    if (data) {
+      setFriends(data);
+    }
+  }
+
+  loadPlayers();
+}, []);
+  const leaderboard = useMemo(() => Friends.map(friend => {
     const total = matches.reduce((sum, match) => sum + calculatePoints(picks[friend.id]?.[match.id], match), 0);
     const exacts = matches.filter(m => picks[friend.id]?.[m.id]?.a === m.scoreA && picks[friend.id]?.[m.id]?.b === m.scoreB).length;
     return { ...friend, total, exacts };
   }).sort((a,b) => b.total - a.total || b.exacts - a.exacts), [matches, picks]);
 
-  const pot = demoFriends.filter(f => f.paid).length * league.entry;
+  const pot = Friends.filter(f => f.paid).length * league.entry;
 
   function updatePick(matchId, field, value) {
     const clean = value === '' ? '' : Math.max(0, Number(value));
