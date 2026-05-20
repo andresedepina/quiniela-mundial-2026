@@ -54,13 +54,13 @@ useEffect(() => {
 
   loadPlayers();
 }, []);
-  const leaderboard = useMemo(() => Friends.map(friend => {
+  const leaderboard = useMemo(() => friends.map(friend => {
     const total = matches.reduce((sum, match) => sum + calculatePoints(picks[friend.id]?.[match.id], match), 0);
     const exacts = matches.filter(m => picks[friend.id]?.[m.id]?.a === m.scoreA && picks[friend.id]?.[m.id]?.b === m.scoreB).length;
     return { ...friend, total, exacts };
   }).sort((a,b) => b.total - a.total || b.exacts - a.exacts), [matches, picks]);
 
-  const pot = Friends.filter(f => f.paid).length * league.entry;
+  const pot = friends.filter(f => f.paid).length * league.entry;
 
   function updatePick(matchId, field, value) {
     const clean = value === '' ? '' : Math.max(0, Number(value));
